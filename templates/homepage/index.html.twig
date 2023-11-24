@@ -1,0 +1,34 @@
+{% extends "base.html.twig" %}
+
+{% block title %}{{ parent() }} My project{% endblock %}
+
+{% block body %}
+<div class="row">
+    <div class="col">
+        <p>{{ my_array | join(' / ') }}</p>
+        {#    <pre>#}
+        {#        {{ dump(my_array) }}#}
+        {#    </pre>#}
+            <ul>
+                {% for value in my_array %}
+                    <li>{{ value }}</li>
+                {% endfor %}
+            </ul>
+            
+            <ol>
+                {% for key, value in assoc_array %}
+                    <li>key : {{ key ~ ' ' ~ value }}, value : {{ value }}</li>
+                {% endfor %}
+            </ol>
+
+            <p>{{ now | date('d/m/y H:i:s') }}</p>
+
+            <p>{{ assoc_array['key0'] }}</p>
+            
+            <p><img src="{{ asset('img/photo.jpg') }}" width="200" alt="petit bateau"></p>
+
+            <a href="{{ url('homepage.hello' , { name: 'world' }) }}">Hello Space<a>
+        </div>
+    </div>
+{% endblock %}
+

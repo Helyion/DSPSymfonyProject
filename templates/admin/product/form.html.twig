@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="row">
+    <div class="col">
+        {{ form_start(form, {attr: { novalidate: 'novamidate' }}) }}
+            <p>
+                {{ form_label(form.name, 'Name : ')}}
+                {{ form_widget(form.name) }}
+                {{ form_errors(form.name) }}
+            </p>
+            <p>
+                {{ form_label(form.price, 'Price : ')}}
+                {{ form_widget(form.price) }}
+                {{ form_errors(form.price) }}
+            </p>
+            <p>
+                {{ form_label(form.description, 'Description : ')}}
+                {{ form_widget(form.description) }}
+                {{ form_errors(form.description) }}
+            </p>
+            <p>
+                {{ form_label(form.image, 'Image : ')}}
+                {{ form_widget(form.image) }}
+                {{ form_errors(form.image) }}
+            </p>
+            <p><input type="submit" class="btn btn-primary"></p>
+        {{ form_end(form) }}
+    </div>
+</div>
+{% endblock %}

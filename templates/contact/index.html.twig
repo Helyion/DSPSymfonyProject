@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col">
+            <h2>Gestion des Contact</h2>
+
+            {% for notice in app.flashes('notice') %}
+                <p class="alert alert-success">{{ notice }}</p>
+            {% endfor %}
+            <p>
+                <a href="{{ url('contact.form') }}" class="btn btn-info">Add</a>
+            </p>
+        </div>
+        <table class="table">
+            <tr>
+                <th>subject</th>
+                <th>email</th>
+                <th>message</th>
+            </tr>
+            {% for contact in contacts %}
+                <tr>
+                    <td>
+                        {{ contact.subject }}
+                    </td>
+                    <td>
+                        {{ contact.email }}
+                    </td>
+                    <td>
+                        {{ contact.message }}
+                    </td>
+                    <td>
+                        <a href="{{ url('contact.update', { id: contact.id }) }}" class="btn btn-warning">Edit</a>
+                        <a href="{{ url('contact.delete', {id: contact.id }) }}" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col">
+            <h2>Gestion des produits</h2>
+
+            {% for notice in app.flashes('notice') %}
+                <p class="alert alert-success">{{ notice }}</p>
+            {% endfor %}
+            <p>
+                <a href="{{ url('admin.product.form') }}" class="btn btn-info">Add</a>
+            </p>
+        </div>
+        <table class="table">
+            <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Price</th>
+            </tr>
+            {% for product in products %}
+                <tr>
+                    <td>
+                        <img src="{{ asset('img/' ~ product.image)}}" alt="">
+                    </td>
+                    <td>
+                        {{ product.name }}
+                    </td>
+                    <td>
+                        {{ product.price }}
+                    </td>
+                    <td>
+                        <a href="{{ url('admin.product.update', { id: product.id }) }}" class="btn btn-warning">Edit</a>
+                        <a href="{{ url('admin.product.delete', {id: product.id }) }}" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}
